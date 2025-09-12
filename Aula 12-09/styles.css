@@ -1,0 +1,20 @@
+p {
+    background-color: black;
+}
+
+
+ul {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.item {
+    color: brown;
+}
+
+#item2{
+    color:blueviolet
+}
+
+h1{
+    color:red;
+}
