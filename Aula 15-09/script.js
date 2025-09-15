@@ -14,7 +14,7 @@ if (idade >= 18){
     alert("Acesso Negado!")
 }
 
-let operador = "+"
+// let operador = "+"
 
 
 // if (operador == "+"){
