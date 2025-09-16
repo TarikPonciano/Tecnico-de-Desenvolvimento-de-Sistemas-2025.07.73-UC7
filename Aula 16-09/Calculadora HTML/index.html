@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora HTML</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h1>Minha Calculadora</h1>
+
+    <!--
+    <input> 
+    Criar campo número 1
+    Criar campo operador
+    Criar campo número 2
+    Criar botão "Calcular"
+    Exibir o resultado em um "<p></p>" -->
+    <label name="numero1">Número 1</label>
+    <input type="number" name="numero1" id="num1">
+    <br>
+    <label name="operador">Operador</label>
+    <!-- <input type="text" name="operador" id="op"> -->
+    <select name="operador" id="op">
+        <option value="+">Soma</option>
+        <option value="-">Subtração</option>
+        <option value="*">Multiplicação</option>
+        <option value="/">Divisão</option>
+    </select>
+    <br>
+    <label name="numero2">Número 2</label>
+    <input type="number" name="numero2" id="num2">
+    <br>
+
+    <button type="button" onclick="calcular()">Calcular</button>
+
+    <h2>Resultado: </h2>
+
+</body>
+
+</html>
