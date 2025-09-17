@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Funcionário</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Cadastro de Funcionários</h1>
+
+    <form onsubmit="cadastrarFuncionario(event)" style="display: flex; align-content: center; justify-content: center; ">
+        <div class="form-content" style="display: flex; flex-direction: column; gap: 10px;">
+
+            <div>
+                <label for="campoNome">Nome</label>
+                <input type="text" id="nome" name="campoNome" placeholder="Digite o nome do funcionário" required>
+            </div>
+
+            <div>
+                <label for="campoSalario">Salário</label>
+                <input type="number" id="salario" name="campoSalario" placeholder="Digite o salário do funcionário"
+                    required>
+            </div>
+
+            <div>
+                <label for="campoCargo">Cargo</label>
+                <input type="text" id="cargo" name="campoCargo" placeholder="Digite o cargo do funcionário" required>
+            </div>
+
+            <div>
+                <label for="campoIdade">Idade</label>
+                <input type="number" id="idade" name="campoIdade" placeholder="Digite a idade do funcionário" required>
+            </div>
+
+            <div>
+                <label for="campoCPF">CPF</label>
+                <input type="text" id="CPF" name="campoCPF" placeholder="Digite o cpf do funcionário" required>
+            </div>
+            <div>
+                <label for="listaDepartamento">Departamento</label>
+                <select name="listaDepartamento" id="departamento" required>
+                    <option value="" disabled selected hidden>Selecione o Departamento...</option>
+                    <option value="TI">TI</option>
+                    <option value="Recursos Humanos">Recursos Humanos</option>
+                    <option value="Gerência">Gerência</option>
+                    <option value="Financeiro">Financeiro</option>
+                </select>
+            </div>
+            <div>
+                <label>Estado Civil</label>
+                <label><input type="radio" name="estadoCivil" value="Solteiro" checked>Solteiro</label>
+                <label><input type="radio" name="estadoCivil" value="Casado">Casado</label>
+                <label><input type="radio" name="estadoCivil" value="Outro">Outro</label>
+            </div>
+            <button type="submit">Cadastrar</button>
+            <button type="reset">Limpar</button>
+
+        </div>
+
+    </form>
+
+    <h1>Lista de Funcionários</h1>
+    <ul id="lista-funcionarios">
+        
+    </ul>
+</body>
+
+</html>
