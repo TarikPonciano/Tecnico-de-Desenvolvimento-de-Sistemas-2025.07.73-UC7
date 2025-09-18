@@ -1,3 +1,6 @@
+let numeroDeAlunos = 0
+
+
 function cadastrarAluno(e) {
     e.preventDefault() //Impedir reload
 
@@ -5,6 +8,8 @@ function cadastrarAluno(e) {
     const email = document.getElementById("campo-email").value
     const curso = document.getElementById("lista-curso").value
     const modalidade = document.querySelector("input[name='radio-modalidade']:checked").value
+
+
 
     if (!nome) {
         alert("Campo nome não pode ficar vazio!")
@@ -27,11 +32,29 @@ function cadastrarAluno(e) {
 
     aluno.innerText = `Nome: ${nome} | Email: ${email} | Curso: ${curso} | Modalidade: ${modalidade}`
 
+    // Estilizar os alunos da modalidade EAD (fundo de cor diferente)
+    if (modalidade == "EAD") {
+        aluno.style.backgroundColor = "red"
+    }
+
+    //Maneira Alternativa
+    // aluno.classList.add(`modalidade-${modalidade.toLowerCase()}`)
+
+
     listaAlunos.appendChild(aluno)
 
+    numeroDeAlunos += 1
+
     // Resetar o Formulário
+
+    const form = document.querySelector("form")
+    form.reset()
+
     // Contabilizar quantos alunos foram cadastrados
-    // Estilizar os alunos da modalidade EAD (fundo de cor diferente)
+
+    document.getElementById("contador-alunos").innerText = `Total de Alunos: ${numeroDeAlunos}`
+
+
 
 
 }
