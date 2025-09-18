@@ -29,5 +29,9 @@ function cadastrarAluno(e) {
 
     listaAlunos.appendChild(aluno)
 
-    
+    // Resetar o Formulário
+    // Contabilizar quantos alunos foram cadastrados
+    // Estilizar os alunos da modalidade EAD (fundo de cor diferente)
+
+
 }
