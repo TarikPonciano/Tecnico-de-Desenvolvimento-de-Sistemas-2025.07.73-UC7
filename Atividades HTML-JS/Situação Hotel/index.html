@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Reserva</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <h1>Cadastro de Reserva</h1>
+    <form style="display:flex; flex-direction: column; align-content: center; justify-content: center; width: 25vw;"
+        onsubmit="cadastrarReserva(event)">
+
+        <label for="campo-nome">Nome do Hospede</label>
+        <input type="text" id="campo-nome" placeholder="Digite seu nome..." required>
+
+        <label for="lista-tipo">Tipo de Quarto</label>
+        <select id="lista-tipo" onchange="atualizarValor(event)" required>
+            <option value="" data-price="0,00" selected disabled hidden>Escolha o tipo de quarto...</option>
+            <option value="Simples" data-price="50,00">Simples</option>
+            <option value="Duplo" data-price="100,00">Duplo</option>
+            <option value="Suite" data-price="150,00">Suite</option>
+        </select>
+
+        <span id="valor-quarto">Valor do Quarto: R$ 0,00</span>
+
+        <label for="campo-entrada">Data de Entrada</label>
+        <input type="date" id="campo-entrada" onchange="atualizarValor(event)" required>
+
+        <label for="campo-saida">Data de Saída</label>
+        <input type="date" id="campo-saida" onchange="atualizarValor(event)" required>
+
+        <label>Café da Manhã</label>
+        <label> <input type="radio" name="radio-cafe" value="Sim" checked>Sim</label>
+        <label> <input type="radio" name="radio-cafe" value="Não">Não</label>
+
+        <span id="valor-total">Valor Total da Estadia: R$ 0,00</span>
+
+        <button type="submit">Cadastrar</button>
+        <button type="reset">Limpar</button>
+    </form>
+
+    <h1>Lista de Reservas</h1>
+
+    <ul id="lista-reserva"></ul>
+
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
