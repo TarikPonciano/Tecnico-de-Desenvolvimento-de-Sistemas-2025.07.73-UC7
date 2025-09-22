@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Consultas</title>
+</head>
+
+<body>
+
+    <h1>Cadastro de Consultas</h1>
+
+    <form onsubmit="cadastrarConsulta(event)"
+        style="display: flex; flex-direction: column; width: 25vw; align-items: left; justify-content: center;">
+
+        <label for="campo-nome">Nome</label>
+        <input id="campo-nome" type="text" required>
+
+        <label for="lista-especialidade">Especialidade</label>
+        <select id="lista-especialidade" required>
+            <option value="" disabled selected hidden>Selecione a Especialidade...</option>
+            <option value="Pediatria">
+                Pediatria
+            </option>
+            <option value="Clinica Geral">
+                Clinica Geral
+            </option>
+            <option value="Cardiologia">
+                Cardiologia
+            </option>
+        </select>
+
+        <span id="aviso-qtd-especialidad" style="display: none;">Consultas marcadas em {especialidade}:
+            {quantidade}</span>
+
+        <label>Turno</label>
+        <label><input type=radio name="radio-turno" value="Manhã" checked>Manhã</label>
+        <label><input type=radio name="radio-turno" value="Tarde">Tarde</label>
+        <label><input type=radio name="radio-turno" value="Noite">Noite</label>
+
+        <div style="display: flex; flex-direction: column; color: red;">
+            <span style="display:none;" id="aviso-turno-duplicado">Esse paciente já possui consulta marcada neste
+                turno!</span>
+
+            <span style="display: none;" id="aviso-turno-limite">Esse turno já superou o limite de 5 consultas!</span>
+        </div>
+
+        <button type="submit">Enviar</button>
+        <button type="reset">Limpar</button>
+
+    </form>
+
+    <h1>Lista de Consultas</h1>
+    <ul id="lista-consulta">
+
+    </ul>
+</body>
+
+</html>
