@@ -17,6 +17,9 @@
         <label for="campo-nome">Nome</label>
         <input id="campo-nome" type="text" required>
 
+        <label for="campo-cpf">CPF</label>
+        <input id="campo-cpf" type="text" required>
+
         <label for="lista-especialidade">Especialidade</label>
         <select id="lista-especialidade" required>
             <option value="" disabled selected hidden>Selecione a Especialidade...</option>
@@ -35,9 +38,9 @@
             {quantidade}</span>
 
         <label>Turno</label>
-        <label><input type=radio name="radio-turno" value="Manhã" checked>Manhã</label>
-        <label><input type=radio name="radio-turno" value="Tarde">Tarde</label>
-        <label><input type=radio name="radio-turno" value="Noite">Noite</label>
+        <label><input type=radio name="radio-turno" value="Manhã" onclick="verificarTurno(event)" checked>Manhã</label>
+        <label><input type=radio name="radio-turno" value="Tarde" onclick="verificarTurno(event)">Tarde</label>
+        <label><input type=radio name="radio-turno" value="Noite" onclick="verificarTurno(event)">Noite</label>
 
         <div style="display: flex; flex-direction: column; color: red;">
             <span style="display:none;" id="aviso-turno-duplicado">Esse paciente já possui consulta marcada neste
@@ -55,6 +58,10 @@
     <ul id="lista-consulta">
 
     </ul>
+
+    <script src="scripts.js">
+    </script>
+
 </body>
 
 </html>
