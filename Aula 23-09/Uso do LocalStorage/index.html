@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste LocalStorage</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Cadastro de Pessoa</h1>
+    <form style="display: flex; flex-direction: column; width: 25vw; align-items: left; justify-content: center;"
+        onsubmit="cadastrarPessoa(event)">
+
+        <label for="campo-nome">Nome</label>
+        <input type="text" required id="campo-nome">
+
+
+        <label for="campo-idade">Idade</label>
+        <input type="number" required id="campo-idade" step="1">
+
+
+        <label for="campo-altura">Altura</label>
+        <input type="number" required id="campo-altura" step="0.01">
+
+        <button type="submit">Enviar</button>
+        <button type="reset">Limpar</button>
+    </form>
+
+    <h1>Informações Cadastradas</h1>
+
+    <div style="display: flex; flex-direction: column; width: 25vw; align-items: left; justify-content: center;">
+
+        <span id="info-nome">Nome:</span>
+        <span id="info-idade">Idade:</span>
+        <span id="info-altura">Altura:</span>
+    </div>
+
+    <script src="scripts.js"></script>
+
+</body>
+
+</html>
