@@ -18,10 +18,10 @@
         <input id="campo-nome" type="text" required>
 
         <label for="campo-cpf">CPF</label>
-        <input id="campo-cpf" type="text" required>
+        <input id="campo-cpf" type="text" onchange="verificarTurno(event)" required>
 
         <label for="lista-especialidade">Especialidade</label>
-        <select id="lista-especialidade" required>
+        <select id="lista-especialidade" onchange="verificarTurno(event)" required>
             <option value="" disabled selected hidden>Selecione a Especialidade...</option>
             <option value="Pediatria">
                 Pediatria
@@ -34,7 +34,7 @@
             </option>
         </select>
 
-        <span id="aviso-qtd-especialidad" style="display: none;">Consultas marcadas em {especialidade}:
+        <span id="aviso-qtd-especialidade" style="display: none;">Consultas marcadas em {especialidade}:
             {quantidade}</span>
 
         <label>Turno</label>

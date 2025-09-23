@@ -2,6 +2,7 @@ const pacientes = {
 
 }
 
+
 function cadastrarConsulta(e) {
     e.preventDefault()
 
@@ -9,6 +10,12 @@ function cadastrarConsulta(e) {
     const cpf = document.getElementById("campo-cpf").value
     const especialidade = document.getElementById("lista-especialidade").value
     const turno = document.querySelector("input[name='radio-turno']:checked").value
+
+    const podeCadastrar = verificarTurno(e)
+
+    if (podeCadastrar == false) {
+        return
+    }
 
     const htmlConsultas = document.getElementById("lista-consulta")
 
@@ -28,21 +35,32 @@ function cadastrarConsulta(e) {
             }
         ]
     }
+
+    verificarTurno(e)
 }
 
 function verificarTurno(e) {
+
     const cpf = document.getElementById("campo-cpf").value
     const turno = document.querySelector("input[name='radio-turno']:checked").value
+    const especialidade = document.getElementById("lista-especialidade").value
 
+    // Verificação Total de Consultas no mesmo Turno e Contagem de Especialidade
     let contagemConsultas = 0
+    let contagemEspecialidade = 0
+    for (let cpfAtual in pacientes) {
+        for (let con of pacientes[cpfAtual]) {
 
-    for (let cpf in pacientes) {
-        for (let con of pacientes[cpf]) {
             if (con.turno == turno) {
                 contagemConsultas += 1
             }
+
+            if (con.especialidade == especialidade) {
+                contagemEspecialidade += 1
+            }
         }
     }
+
 
     const avisoLimiteTurno = document.getElementById("aviso-turno-limite")
 
@@ -53,9 +71,25 @@ function verificarTurno(e) {
         avisoLimiteTurno.style.display = "none"
     }
 
+    const avisoQtdEspecialidade = document.getElementById("aviso-qtd-especialidade")
 
+    avisoQtdEspecialidade.innerText = `Consultas marcadas em ${especialidade}:  ${contagemEspecialidade}`
+
+    if (especialidade) {
+        avisoQtdEspecialidade.style.display = "block"
+    } else {
+        avisoQtdEspecialidade.style.display = "none"
+    }
+
+    if (contagemConsultas >= 5) {
+        return false
+    }
+
+    // Verificação de consultas do mesmo paciente
     if (!pacientes[cpf]) {
-        return
+
+        document.getElementById("aviso-turno-duplicado").style.display = "none"
+        return true
     }
 
     const consultas = pacientes[cpf]
@@ -82,7 +116,9 @@ function verificarTurno(e) {
 
     if (consulta) {
         avisoTurnoDuplicado.style.display = "block"
+        return false
     } else {
         avisoTurnoDuplicado.style.display = "none"
+        return true
     }
 }
