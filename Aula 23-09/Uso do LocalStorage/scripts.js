@@ -34,14 +34,14 @@ function carregarDados() {
 carregarDados()
 
 
-const lista = ["Banana", "Maçã", "Pêra"]
+// const lista = ["Banana", "Maçã", "Pêra"]
 
-const dicionario = {
-    "nome": "Michael",
-    "idade": 52,
-    "altura": 1.65,
-    "frutasPreferidas": lista
-}
+// const dicionario = {
+//     "nome": "Michael",
+//     "idade": 52,
+//     "altura": 1.65,
+//     "frutasPreferidas": lista
+// }
 
 // for (let contador = 0; contador < lista.length; contador++) {
 //     alert(`${contador} - ${lista[contador]}`)
@@ -54,8 +54,6 @@ const dicionario = {
 // for (let index in dicionario) {
 //     frase += `${index}: ${dicionario[index]}\n`
 // }
-
-
 
 
 // lista.forEach(fruta => {
