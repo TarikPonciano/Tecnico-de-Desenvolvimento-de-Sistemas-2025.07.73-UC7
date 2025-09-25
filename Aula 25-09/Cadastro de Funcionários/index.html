@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Funcionário</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Cadastro de Funcionário</h1>
+
+    <!-- id, nome, salário, cargo, departamento -->
+
+    <form class="default-form" id="form-cadastro" onsubmit="cadastrarFuncionario(event)">
+
+        <label for="campo-id">ID</label>
+        <input id="campo-id" type="number" placeholder="Digite o ID do funcionário..." required>
+
+        <label for="campo-nome">Nome</label>
+        <input id="campo-nome" type="text" placeholder="Digite o Nome do funcionário..." required>
+
+        <label for="campo-salario">Salário</label>
+        <input id="campo-salario" type="number" placeholder="Digite o Salário do funcionário..." required>
+
+        <label for="campo-cargo">Cargo</label>
+        <select id="campo-cargo" required>
+            <option value="" disabled selected hidden>Selecione o cargo...</option>
+            <option value="Analista de Sistema">Analista de Sistema</option>
+            <option value="Gerente">Gerente</option>
+            <option value="Vendedor">Vendedor</option>
+        </select>
+
+        <label for="campo-departamento">Departamento</label>
+        <select id="campo-departamento" required>
+            <option value="" disabled selected hidden>Selecione o departamento...</option>
+            <option value="TI">TI</option>
+            <option value="RH">RH</option>
+            <option value="Vendas">Vendas</option>
+        </select>
+
+        <div class="form-buttons">
+            <button type="submit">Cadastrar</button>
+            <button type="reset">Limpar</button>
+        </div>
+
+    </form>
+
+    <h1>Lista de Funcionários</h1>
+
+    <table id="tabela-funcionarios">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOME</th>
+                <th>SALÁRIO</th>
+                <th>CARGO</th>
+                <th>DEPARTAMENTO</th>
+                <th>AÇÕES</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
