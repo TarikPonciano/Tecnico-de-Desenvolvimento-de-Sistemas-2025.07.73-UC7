@@ -3,7 +3,7 @@ function cadastrarFuncionario(e) {
     const nome = document.getElementById("campo-nome").value
     const salario = document.getElementById("campo-salario").value
     const cargo = document.getElementById("campo-cargo").value
-    const departamento = document.getElementById("campo-nome").value
+    const departamento = document.getElementById("campo-departamento").value
 
     const novoFuncionario = {
         "id": id,
@@ -14,6 +14,14 @@ function cadastrarFuncionario(e) {
     }
 
     const funcionarios = JSON.parse(localStorage.getItem("funcionarios")) || []
+
+    const funcionarioJaExiste = funcionarios.find((f) => f.id == novoFuncionario.id)
+
+    if (funcionarioJaExiste) {
+        alert("Já existe funcionário com esse id!")
+        return
+    }
+
     funcionarios.push(novoFuncionario)
 
     localStorage.setItem("funcionarios", JSON.stringify(funcionarios))
@@ -24,6 +32,12 @@ function cadastrarFuncionario(e) {
 // 2 - Utilizar forEach para percorrer cada elemento da lista do localStorage
 // 3 - Dentro do forEach criar um elemento <tr></tr> e dentro desse elemento criar os elementos <td></td> para cada informação do item que deseja exibir
 // 4 - Adicionar os elementos criados ao tbody da tabela de exibição
+
+// Criar a funcionalidade editar:
+// No campo Ação, todos os itens devem conter um botão (<a></a>) de Editar
+// Ao clicar em Editar, o usuário deve ser redirecionado a uma nova tela, com um formulário preenchido pelas informações do item escolhido 
+// Ao final do formulário deve conter um botão "Salvar Alterações" e as mundanças feitas no item devem ser armazenadas no localStorage
+// As mudanças devem refletir na tabela da página original
 
 function renderizarTabela() {
 
@@ -38,7 +52,30 @@ function renderizarTabela() {
         <td>${Number(funcionario.salario).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</td>
         <td>${funcionario.cargo}</td>
         <td>${funcionario.departamento}</td>
+        
         `
+
+        const campoAcoes = document.createElement("td")
+        campoAcoes.classList.add("acoes")
+
+        const botaoRemover = document.createElement("button")
+        botaoRemover.type = "button"
+        botaoRemover.innerText = "REMOVER"
+
+        botaoRemover.addEventListener("click", () => {
+            const listaFuncionariosAtual = JSON.parse(localStorage.getItem("funcionarios")) || []
+
+            const listaFuncionariosFiltrada = listaFuncionariosAtual.filter((f) => f.id != funcionario.id)
+
+
+            localStorage.setItem("funcionarios", JSON.stringify(listaFuncionariosFiltrada))
+            window.location.reload()
+        })
+
+        campoAcoes.appendChild(botaoRemover)
+        linha.appendChild(campoAcoes)
+
+
         corpoTabelaHtml.appendChild(linha)
     });
 
