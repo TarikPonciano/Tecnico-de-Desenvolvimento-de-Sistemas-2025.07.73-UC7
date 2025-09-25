@@ -1,18 +1,163 @@
-.default-form {
-    display: flex;
-    flex-direction: column;
-    width: 25vw;
-    align-content: left;
-    justify-content: center;
-}
+body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f5f6fa;
+            color: #2f3640;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-.form-buttons {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-between;
-    padding-left: 25%;
-    padding-right: 25%;
-    margin-top: 10px;
+        h1 {
+            color: #273c75;
+            text-align: left;
+            margin-bottom: 15px;
+        }
 
-}
+        /* ====== FORM ====== */
+        .default-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            width: 80vw;
+            gap: 15px 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .default-form label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: left;
+            display: block;
+            grid-column: span 2;
+        }
+
+        .default-form input,
+        .default-form select {
+            width: 30vw;
+            
+            padding: 10px;
+            border: 1px solid #dcdde1;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border 0.3s ease;
+
+        }
+
+        .default-form input:focus,
+        .default-form select:focus {
+            outline: none;
+            border: 1px solid #0097e6;
+            box-shadow: 0 0 4px rgba(0,151,230,0.4);
+        }
+
+        /* Botões do formulário */
+        .form-buttons {
+            grid-column: span 2;
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+        }
+
+        .form-buttons button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+
+        .form-buttons button[type="submit"] {
+            background: #0097e6;
+            color: #fff;
+        }
+
+        .form-buttons button[type="submit"]:hover {
+            background: #40739e;
+        }
+
+        .form-buttons button[type="reset"] {
+            background: #e84118;
+            color: #fff;
+        }
+
+        .form-buttons button[type="reset"]:hover {
+            background: #c23616;
+        }
+
+        /* ====== TABELA ====== */
+        #tabela-funcionarios {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+        }
+
+        #tabela-funcionarios thead {
+            background: #273c75;
+            color: #fff;
+        }
+
+        #tabela-funcionarios th,
+        #tabela-funcionarios td {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 14px;
+            border-bottom: 1px solid #dcdde1;
+        }
+
+        #tabela-funcionarios tbody tr:nth-child(even) {
+            background: #f1f2f6;
+        }
+
+        #tabela-funcionarios tbody tr:hover {
+            background: #dcdde1;
+        }
+
+        /* Ações */
+        .acoes {
+            display: flex;
+            gap: 10px;
+        }
+
+        .acoes a {
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #fff;
+            background: #44bd32;
+            transition: background 0.3s ease;
+        }
+
+        .acoes a:hover {
+            background: #218c74;
+        }
+
+        .acoes button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #fff;
+            background: #e84118;
+            transition: background 0.3s ease;
+        }
+
+        .acoes button:hover {
+            background: #c23616;
+        }
