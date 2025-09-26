@@ -12,7 +12,7 @@
 <body>
     <h1>Editar Funcionário</h1>
 
-    <form class="default-form">
+    <form class="default-form" onsubmit="atualizarFuncionario(event)">
 
         <label for="campo-id">ID</label>
         <input id="campo-id" disabled type="number" placeholder="Digite o ID do funcionário..." required>
@@ -40,8 +40,8 @@
         </select>
 
         <div class="form-buttons">
-            <button type="submit">Cadastrar</button>
-            <button type="reset">Limpar</button>
+            <button type="submit">Editar</button>
+            <button type="button" onclick="carregarPagina()">Resetar</button>
         </div>
 
     </form>
