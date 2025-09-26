@@ -39,6 +39,7 @@ function cadastrarFuncionario(e) {
 // Ao final do formulário deve conter um botão "Salvar Alterações" e as mundanças feitas no item devem ser armazenadas no localStorage
 // As mudanças devem refletir na tabela da página original
 
+
 function renderizarTabela() {
 
     const funcionarios = JSON.parse(localStorage.getItem("funcionarios")) || []
@@ -52,11 +53,15 @@ function renderizarTabela() {
         <td>${Number(funcionario.salario).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}</td>
         <td>${funcionario.cargo}</td>
         <td>${funcionario.departamento}</td>
-        
         `
 
         const campoAcoes = document.createElement("td")
         campoAcoes.classList.add("acoes")
+
+        const botaoEditar = document.createElement("a")
+        botaoEditar.innerText = "EDITAR"
+        botaoEditar.href = `editar.html?id=${funcionario.id}`
+        botaoEditar.target = "_blank"
 
         const botaoRemover = document.createElement("button")
         botaoRemover.type = "button"
@@ -71,7 +76,7 @@ function renderizarTabela() {
             localStorage.setItem("funcionarios", JSON.stringify(listaFuncionariosFiltrada))
             window.location.reload()
         })
-
+        campoAcoes.appendChild(botaoEditar)
         campoAcoes.appendChild(botaoRemover)
         linha.appendChild(campoAcoes)
 
