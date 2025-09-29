@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Tarefas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Cadastro de Tarefas</h1>
+
+    <form style="display: flex; flex-direction: column; width: 25vw; align-items: left; justify-content: center;"
+        onsubmit="cadastrarTarefa(event)">
+        <label for="campo-id">ID</label>
+        <input type="text" id="campo-id" required placeholder="Digite o ID da tarefa...">
+
+        <label for="campo-nome">Nome</label>
+        <input type="text" id="campo-nome" required placeholder="Digite o Nome da tarefa...">
+
+        <label for="campo-descricao">Descrição</label>
+        <input type="text" id="campo-descricao" required placeholder="Digite a descrição da tarefa...">
+
+        <label for="campo-data">Data</label>
+        <input type="date" id="campo-data" required>
+
+        <label for="campo-situacao">Situação</label>
+        <select id="campo-situacao" required>
+            <option value="" selected disabled hidden>
+                Escolha a situação da tarefa...
+            </option>
+            <option value="Em Andamento">
+                Em Andamento
+            </option>
+            <option value="Pendente">
+                Pendente
+            </option>
+            <option value="Concluido">
+                Concluido
+            </option>
+        </select>
+        <button type="submit">Enviar</button>
+        <button type="reset">Limpar</button>
+
+    </form>
+
+    <h1>Lista de Tarefas</h1>
+    <table id="lista-tarefas">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>Situação</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
