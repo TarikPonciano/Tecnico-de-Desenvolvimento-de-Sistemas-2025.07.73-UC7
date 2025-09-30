@@ -1,0 +1,138 @@
+/* -------------------------------------- */
+/* 1. Reset e Estilos Globais (Seletores de Tipo) */
+/* -------------------------------------- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e9ecef; /* Fundo suave */
+    color: #343a40;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto; /* Centraliza o container */
+}
+
+h1 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+
+
+h2 {
+    color: #495057;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+
+/* -------------------------------------- */
+/* 2. Estilização do Formulário (Box Model) */
+/* -------------------------------------- */
+.task-form {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Estiliza inputs, selects e textareas */
+.task-form input[type="text"], 
+.task-form select, 
+.task-form input[type="date"], 
+.task-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box; /* Garante que padding não aumente a largura total */
+    margin-top: 5px; /* Espaço entre label e input */
+}
+
+.task-form textarea {
+    resize: vertical; /* Permite redimensionar apenas verticalmente */
+}
+
+/* -------------------------------------- */
+/* 3. Estilização dos Botões (Pseudo-seletor) */
+/* -------------------------------------- */
+.btn-submit {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s; /* Transição para o efeito hover */
+    width: 100%; /* Ocupa a largura total */
+}
+
+.btn-submit:hover {
+    background-color: #218838; /* Escurece a cor no hover */
+}
+
+
+/* -------------------------------------- */
+/* 4. Estilização da Lista e Itens (Classes) */
+/* -------------------------------------- */
+#task-list {
+    list-style: none; /* Remove os marcadores de lista */
+    padding: 0;
+}
+
+.task-item {
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-left: 6px solid #ccc; /* Linha de destaque neutra */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.task-details strong {
+    font-weight: 600;
+    color: #007bff;
+}
+
+.task-description {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-top: 5px;
+}
+
+
+/* -------------------------------------- */
+/* 5. Diferenciação por Status (Classes Essenciais) */
+/* -------------------------------------- */
+
+.status-pendente {
+    border-left-color: #ffc107; /* Amarelo/Laranja de Alerta */
+}
+
+.status-concluido {
+    border-left-color: #28a745; /* Verde de Sucesso */
+    opacity: 0.85; /* Leve transparência para indicar finalização */
+}
+
+.status-concluido .task-name {
+    text-decoration: line-through; /* Riscado */
+    color: #6c757d;
+}
+
+.status-cancelado {
+    border-left-color: #dc3545; /* Vermelho de Perigo */
+    opacity: 0.6; /* Mais opacidade para indicar que não será feita */
+}
