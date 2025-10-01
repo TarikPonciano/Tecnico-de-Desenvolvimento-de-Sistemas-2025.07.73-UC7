@@ -100,6 +100,10 @@ h2 {
     border-left: 6px solid #ccc; /* Linha de destaque neutra */
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .task-details strong {
@@ -113,6 +117,48 @@ h2 {
     margin-top: 5px;
 }
 
+.task-buttons{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+}
+
+button{
+    width: 80px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+    color:#ffffff;
+    align-self: center;
+}
+
+button:active{
+    border: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.btn-edit{ 
+    background-color: #fa9209;
+}
+.btn-edit:hover{
+    background-color: #d07a09;
+}
+
+.btn-edit:active{
+    background-color: #ff9f22;
+}
+
+.btn-delete{ 
+    background-color: #e44646fc;
+}
+.btn-delete:hover{
+    background-color: #b63838fc;
+}
+
+.btn-delete:active{
+    background-color: #f74c4cfc;
+}
 
 /* -------------------------------------- */
 /* 5. Diferenciação por Status (Classes Essenciais) */
@@ -135,4 +181,45 @@ h2 {
 .status-cancelado {
     border-left-color: #dc3545; /* Vermelho de Perigo */
     opacity: 0.6; /* Mais opacidade para indicar que não será feita */
+}
+.btn-fechar{
+    float: right;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.modal-edit{
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    position:fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+}
+.modal-edit-content{
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    position: relative;
+
+}
+
+.modal-edit-content .btn-submit{
+    background-color: #6031fa;
+}
+
+.modal-edit-content .btn-submit:hover{
+    background-color: #3f10dc;
+}
+
+.modal-edit-content .btn-submit:active{
+    background-color: #7853f4;
 }

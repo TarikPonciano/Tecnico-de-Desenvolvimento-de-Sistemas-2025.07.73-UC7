@@ -45,7 +45,48 @@
             <ul id="task-list">
             </ul>
         </section>
+
+        <div id="modal-edit" class="modal-edit">
+            <div class="modal-edit-content">
+                <span class="btn-fechar" id="btn-fechar-modal">&times;</span>
+                <h1>Editar Tarefa</h1>
+                <form id="form-edit" class="task-form">
+                    <input type="hidden" id="edit-id">
+
+                    <div class="form-group">
+                        <label for="edit-name">Nome da Tarefa:</label>
+                        <input type="text" id="edit-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-status">Status:</label>
+                        <select id="edit-status" required>
+                            <option value="pendente">Pendente</option>
+                            <option value="concluido">Concluído</option>
+                            <option value="cancelado">Cancelado</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-date">Data Limite:</label>
+                        <input type="date" id="edit-date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-description">Descrição (Opcional):</label>
+                        <textarea id="edit-description"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Salvar Alteração</button>
+                </form>
+
+            </div>
+        </div>
+
+
     </div>
+
+
 
     <script src="script.js"></script>
 </body>

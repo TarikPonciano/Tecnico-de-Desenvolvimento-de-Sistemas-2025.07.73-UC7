@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const taskForm = document.getElementById('task-form');
     const taskList = document.getElementById('task-list');
-
+    const modal = document.getElementById('modal-edit');
+    const botaoFecharModal = document.getElementById('btn-fechar-modal');
     // Carregar tarefas do localStorage ao iniciar
     loadTasks();
 
@@ -10,6 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         addTask();
     });
+
+    botaoFecharModal.addEventListener('click', (e) => {
+        closeModal();
+    })
+
 
     // Função para obter as tarefas salvas
     function getTasks() {
@@ -29,14 +35,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const date = document.getElementById('task-date').value;
         const description = document.getElementById('task-description').value;
 
+        let idContador = JSON.parse(localStorage.getItem("idContador")) || 0
+        idContador = Number(idContador)
+        idContador += 1
+
         const newTask = {
-            id: Date.now(), // ID único baseado no timestamp
+            id: idContador, // ID único baseado no timestamp
             name,
             status,
             date,
             description
         };
-
+        localStorage.setItem("idContador", JSON.stringify(idContador))
         const tasks = getTasks();
         tasks.push(newTask);
         saveTasks(tasks);
@@ -45,6 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
         taskForm.reset();
         displayTasks(tasks);
     }
+
+
 
     // Função para exibir as tarefas na interface
     function displayTasks(tasks) {
@@ -73,11 +85,70 @@ document.addEventListener('DOMContentLoaded', () => {
                     <small>Data: ${displayDate}</small>
                     ${task.description ? `<p class="task-description">${task.description}</p>` : ''}
                 </div>
+                <div class="task-buttons">
+                
+                    <button class="btn-edit" type="button">Editar</button>
+                    <button class="btn-delete" type="button">Remover</button>
+                
+                </div>
             `;
+
+            listItem.querySelector(".btn-edit").addEventListener("click", (e) => {
+                editTask(e, task.id)
+            })
+            listItem.querySelector(".btn-delete").addEventListener("click", (e) => {
+                removeTask(e, task.id)
+            })
 
             taskList.appendChild(listItem);
         });
     }
+
+    function editTask(e, idTask) {
+        const campoId = document.getElementById("edit-id")
+        const campoNome = document.getElementById("edit-name")
+        const campoStatus = document.getElementById("edit-status")
+        const campoData = document.getElementById("edit-date")
+        const campoDescricao = document.getElementById("edit-description")
+
+        const listaTarefas = getTasks()
+
+        const tarefaEscolhida = listaTarefas.find((t) => t.id == idTask)
+
+        campoId.value = tarefaEscolhida.id
+        campoNome.value = tarefaEscolhida.name
+        campoStatus.value = tarefaEscolhida.status
+        campoData.value = tarefaEscolhida.date
+        campoDescricao.value = tarefaEscolhida.description
+
+        modal.style.display = "block";
+
+
+
+    }
+
+    function removeTask(e, idTask) {
+        const confirmacao = confirm("Tem certeza que deseja remover a tarefa?")
+
+        if (!confirmacao) {
+            return
+        }
+
+        const listaTarefas = JSON.parse(localStorage.getItem("tasks"))
+
+        const listaTarefasModificado = listaTarefas.filter((t) => t.id != idTask)
+
+        localStorage.setItem("tasks", JSON.stringify(listaTarefasModificado))
+
+        displayTasks(listaTarefasModificado)
+
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+
 
     // Função principal de carregamento
     function loadTasks() {
