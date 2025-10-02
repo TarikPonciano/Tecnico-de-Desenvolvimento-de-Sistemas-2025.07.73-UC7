@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskList = document.getElementById('task-list');
     const modal = document.getElementById('modal-edit');
     const botaoFecharModal = document.getElementById('btn-fechar-modal');
+    const editForm = document.getElementById('form-edit');
+
     // Carregar tarefas do localStorage ao iniciar
     loadTasks();
 
@@ -11,6 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         addTask();
     });
+
+    editForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        saveEdit();
+    })
 
     botaoFecharModal.addEventListener('click', (e) => {
         closeModal();
@@ -75,7 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
             listItem.dataset.id = task.id;
 
             // Formata a data para exibição
-            const displayDate = task.date ? new Date(task.date).toLocaleDateString('pt-BR') : 'Não definida';
+
+            const [ano, mes, dia] = task.date.split("-")
+
+            const displayDate = `${dia}/${mes}/${ano}`
+
+
+            // const displayDate = task.date ? new Date(task.date).toLocaleDateString('pt-BR') : 'Não definida';
 
             listItem.innerHTML = `
                 <div class="task-details">
@@ -102,6 +115,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
             taskList.appendChild(listItem);
         });
+    }
+
+    function saveEdit() {
+        const campoId = document.getElementById("edit-id")
+        const campoNome = document.getElementById("edit-name")
+        const campoStatus = document.getElementById("edit-status")
+        const campoData = document.getElementById("edit-date")
+        const campoDescricao = document.getElementById("edit-description")
+
+        const listaTarefas = getTasks()
+        const tarefaModificada = listaTarefas.find((t) => t.id == campoId.value)
+
+        tarefaModificada.name = campoNome.value
+        tarefaModificada.status = campoStatus.value
+        tarefaModificada.date = campoData.value
+        tarefaModificada.description = campoDescricao.value
+
+        localStorage.setItem("tasks", JSON.stringify(listaTarefas))
+
+        displayTasks(listaTarefas)
+        closeModal()
+
     }
 
     function editTask(e, idTask) {
