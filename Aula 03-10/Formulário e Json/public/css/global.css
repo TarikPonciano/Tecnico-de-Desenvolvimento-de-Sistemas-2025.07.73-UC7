@@ -1,0 +1,199 @@
+/* Blue Lock — Estilização */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+:root{
+  --bg-deep: #07060a;
+  --panel: #0f1720;
+  --blue-neon: #2dd4ff;
+  --cyan-deep: #00b4d8;
+  --red-accent: #ff3860;
+  --muted: #9aa4ad;
+  --glass: rgba(255,255,255,0.04);
+  --radius-lg: 18px;
+  --glow: 0 8px 30px rgba(45,212,255,0.08), 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* Reset minimal */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(2,6,23,0.6), transparent 10%),
+    linear-gradient(180deg, var(--bg-deep) 0%, #0b0d12 40%, #06060a 100%);
+  color: #e6eef6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:48px 20px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  gap:28px;
+}
+
+/* Layout container */
+.container{
+  width:100%;
+  max-width:980px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: var(--radius-lg);
+  padding:28px;
+  box-shadow: var(--glow);
+  border: 1px solid rgba(45,212,255,0.06);
+  backdrop-filter: blur(6px) saturate(120%);
+  position:relative;
+  overflow:hidden;
+}
+
+/* Subtle stadium/grid pattern — lembra gramado/arena */
+.container::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.01) 0 1px, transparent 1px 40px),
+    linear-gradient(90deg, rgba(0,0,0,0.15), transparent 40%);
+  opacity:0.06;
+  pointer-events:none;
+}
+
+/* Título com tipografia inspirada em animes esportivos */
+h1{
+  font-family: "Orbitron", monospace;
+  font-weight:700;
+  font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+  letter-spacing:1px;
+  cursor:pointer;
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:10px;
+  background: linear-gradient(90deg, rgba(45,212,255,0.08), rgba(255,56,96,0.03));
+  border: 1px solid rgba(45,212,255,0.14);
+  text-transform:uppercase;
+  color:var(--blue-neon);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.6), 0 6px 24px rgba(45,212,255,0.06);
+  transition: transform .18s ease, filter .18s ease;
+  transform-origin:left center;
+  user-select:none;
+}
+
+/* clique / hover agressivo */
+h1:hover{ transform: translateY(-3px) scale(1.02) }
+h1:active{ transform: translateY(1px) scale(.995); filter:brightness(.95) }
+
+/* destaque "philosophy" segundo rótulo estilo tag */
+h1::after{
+  content: "FILOSOFIA DO EGOÍSTA";
+  display:block;
+  font-family: Inter, sans-serif;
+  font-weight:600;
+  font-size:.65rem;
+  color:var(--muted);
+  margin-top:6px;
+  letter-spacing:.6px;
+}
+
+/* Conteúdo principal em duas colunas responsivas */
+.content{
+  display:grid;
+  grid-template-columns: 380px 1fr;
+  gap:20px;
+  align-items:start;
+  margin-top:18px;
+}
+
+/* Card da imagem com borda angular e corte */
+.image-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-radius:14px;
+  padding:10px;
+  border: 1px solid rgba(0,0,0,0.45);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  position:relative;
+  overflow:hidden;
+}
+
+/* Estilo da imagem — corte estilizado e glow */
+.image-card img{
+  width:100%;
+  display:block;
+  border-radius:10px;
+  object-fit:cover;
+  transform:scale(1.02);
+  transition: transform .6s cubic-bezier(.2,.9,.2,1), filter .35s ease;
+  filter: contrast(1.05) saturate(1.1);
+  border: 3px solid rgba(45,212,255,0.06);
+  box-shadow: 0 10px 30px rgba(45,212,255,0.04);
+}
+
+/* efeito hover para imagem */
+.image-card:hover img{
+  transform: scale(1.06) translateY(-6px);
+  filter: saturate(1.15) brightness(1.02);
+}
+
+/* Glitch / barra diagonal decorativa */
+.image-card::after{
+  content:"";
+  position:absolute;
+  left:-30%;
+  top: -10%;
+  width:140%;
+  height:22%;
+  background: linear-gradient(90deg, rgba(255,56,96,0.05), rgba(45,212,255,0.06));
+  transform: rotate(-18deg);
+  mix-blend-mode: overlay;
+  pointer-events:none;
+}
+
+/* Texto / parágrafo com bloco */
+.text-block{
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  padding:18px;
+  border-radius:12px;
+  border: 1px solid rgba(255,255,255,0.02);
+  color:#cfeefd;
+  line-height:1.55;
+  font-size:0.98rem;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+
+/* Pequeno destaque com etiqueta vermelha (egoísmo) */
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  font-weight:600;
+  font-size:0.8rem;
+  color:#fff;
+  background: linear-gradient(90deg, var(--red-accent), rgba(255,56,96,0.6));
+  box-shadow: 0 6px 18px rgba(255,56,96,0.07);
+  margin-bottom:12px;
+}
+
+/* Links / ênfase */
+a{
+  color:var(--blue-neon);
+  text-decoration:none;
+  border-bottom:1px dashed rgba(45,212,255,0.14);
+  transition:opacity .16s;
+}
+a:hover{opacity:.85}
+
+/* Responsividade */
+@media (max-width:880px){
+  .content{ grid-template-columns: 1fr; }
+  .image-card{ margin-bottom:8px }
+}
+
+/* Opcional: pequenas animações de background em loop */
+@keyframes pulse-glow{
+  0%{ box-shadow: 0 8px 30px rgba(45,212,255,0.04) }
+  50%{ box-shadow: 0 18px 60px rgba(45,212,255,0.06) }
+  100%{ box-shadow: 0 8px 30px rgba(45,212,255,0.04) }
+}
+.image-card{ animation: pulse-glow 6s linear infinite }
+
+/* Fim */

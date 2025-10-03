@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Funcionário</title>
+    <link rel="stylesheet" href="/css/cadastro.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Cadastro de Funcionários</h1>
+        <form class="task-form" action="/cadastro" method="POST">
+
+            <div class="form-group">
+                <label for="campo-id">ID</label>
+                <input type="number" id="campo-id" name="id" required>
+            </div>
+
+            <div class="form-group">
+                <label for="campo-nome">Nome</label>
+                <input type="text" id="campo-nome" name="nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="campo-cargo">Cargo</label>
+                <input type="text" id="campo-cargo" name="cargo" required>
+            </div>
+
+            <div class="form-group">
+                <label for="campo-salario">Salário</label>
+                <input type="number" id="campo-salario" name="salario" required>
+            </div>
+
+            <div class="form-group">
+                <label for="campo-departamento">Departamento</label>
+                <select id="campo-departamento" name="departamento" required>
+                    <option value="" selected disabled hidden>Selecione um Departamento...</option>
+                    <option value="RH">RH</option>
+                    <option value="TI">TI</option>
+                    <option value="Financeiro">Financeiro</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit">Cadastrar</button>
+        </form>
+    </div>
+    <script src="/scripts/script.js"></script>
+</body>
+
+</html>
